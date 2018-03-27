@@ -2,7 +2,7 @@
 import sendgrid
 
 class SendGridManagement(object):
-    _api_key = ""
+    _api_key = None
     _sg = None
     
     def __init__(self):
