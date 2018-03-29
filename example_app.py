@@ -5,10 +5,16 @@ import falcon
 from falcon_sendgrid import SendGridManagement
 from falcon_sendgrid.resources.sendmail import SendMailResource
 
-config = {
-    "API_KEY" : 'abcdefghijklmnopqrstuvwxyz0123456789'
-}
-SendGridManagement().set_apikey(config['API_KEY'])
+from dotenv import Dotenv
+
+config = Dotenv('./.env')
+api_key = config['API_KEY']
+SendGridManagement().set_apikey(api_key)
+
+# config = {
+#     "API_KEY" : 'abcdefghijklmnopqrstuvwxyz0123456789'
+# }
+# SendGridManagement().set_apikey(config['API_KEY'])
 
 app = falcon.API()
 app.add_route('/sendmail', SendMailResource())

@@ -36,14 +36,13 @@ class SendMailResource(SendGridResource):
         mail = Mail(from_email, subject, to_email, content)
         
         try:
-            # response = None
             response = self.mail_send_post(mail.get())
         except:
             raise falcon.HTTPError(falcon.HTTP_753, 'failed send email')
         
         # resp.body = '{"message": "Hello world!"}'
         # resp.status = falcon.HTTP_200
-        
+
         # response.headers
         resp.body = response.body
         resp.status = response.status_code
@@ -69,8 +68,7 @@ class SendMailResource(SendGridResource):
         """
         mail send process
         """
-        
         sg = self._manager._sg
         response = sg.client.mail.send.post(request_body=request_body)
-        
+
         return response
