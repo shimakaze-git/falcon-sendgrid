@@ -8,8 +8,12 @@ from falcon_sendgrid.resources.sendmail import SendMailResource
 from dotenv import Dotenv
 
 config = Dotenv('./.env')
+
 api_key = config['API_KEY']
+from_email = config['FROM']
+
 SendGridManagement().set_apikey(api_key)
+SendGridManagement().set_fromemail(from_email)
 
 # config = {
 #     "API_KEY" : 'abcdefghijklmnopqrstuvwxyz0123456789'

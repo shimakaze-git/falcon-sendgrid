@@ -5,16 +5,16 @@ class SendGridManagement(object):
     _api_key = None
     _sg = None
     
+    _from_email_address = None
+    
     def __init__(self):
-        print('SnedGridManagement')
-        print(self)
+        pass
         
     @classmethod
     def set_apikey(cls, api_key):
         cls._api_key = api_key
         cls._sg = sendgrid.SendGridAPIClient(api_key=cls._api_key)
 
-        print(cls)
-        print('set_apikey : %s' % (api_key))
-        print('cls.api_key: %s' % (cls._api_key))
-        
+    @classmethod
+    def set_fromemail(cls, address):
+        cls._from_email_address = address
